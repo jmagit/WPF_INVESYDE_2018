@@ -1,0 +1,31 @@
+﻿<Window x:Class="Demos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demos"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="351.483" Width="530.933">
+    <Window.Resources>
+        <SolidColorBrush x:Key="ColorFondo" Color="#FFFFE365"/>
+    </Window.Resources>
+    <DockPanel>
+        <Menu x:Name="menu" VerticalAlignment="Top" DockPanel.Dock="Top"/>
+        <StackPanel HorizontalAlignment="Left" Width="120" Background="#FF55D1FF">
+            <Button x:Name="button2" Content="Button" MinWidth="50" MaxWidth="150" Margin="5,5,5,3" Padding="1,5" Click="button2_Click"/>
+            <Button x:Name="button3" Content="Button" Margin="5,0,5,3" Click="button3_Click"/>
+            <Button x:Name="button4" Content="Button" Margin="5,0,5,3" Click="button4_Click"/>
+            <Button Content="kk" Margin="5,0,5,3" Click="Button_Click_1"/>
+            <Button Content="demo2" Margin="5,0,5,3" Click="Button_Click_2"/>
+            <Button x:Name="btnAbrirPOP" Content="pop" Margin="5,0,5,3" Click="btnAbrirPOP_Click"/>
+            <Popup x:Name="popDlg" StaysOpen="True" PopupAnimation="Slide" Placement="Right" PlacementTarget="{Binding ElementName=btnAbrirPOP, Mode=OneWay}" AllowsTransparency="True" Width="200" Height="100">
+                <Border CornerRadius="10" Background="#FFFDFDD4" Padding="5">
+                    <Grid>
+                        <Button x:Name="btnCerrarPOP" Content="Cerrar" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnCerrarPOP_Click" />
+                    </Grid>
+                </Border>
+            </Popup>
+        </StackPanel>
+        <ContentControl x:Name="root" />
+    </DockPanel>
+</Window>

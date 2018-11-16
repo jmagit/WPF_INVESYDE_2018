@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Calculadora.Theme">
+
+    <FontFamily x:Key="LetraPredeterminada">Comic Sans MS</FontFamily>
+
+    <Style x:Key="btnCalculadora" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontFamily" Value="{StaticResource LetraPredeterminada}"/>
+        <Setter Property="Background" Value="Aqua" />
+    </Style>
+
+    <Style x:Key="btnDigito" TargetType="{x:Type Button}" BasedOn="{StaticResource btnCalculadora}">
+        <Setter Property="Foreground" Value="#FF2149FF"/>
+    </Style>
+    <Style x:Key="btnOperacion" TargetType="{x:Type Button}" BasedOn="{StaticResource btnCalculadora}">
+        <Setter Property="Foreground" Value="#FFFF0E03"/>
+    </Style>
+</ResourceDictionary>
