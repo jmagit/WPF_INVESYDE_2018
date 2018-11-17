@@ -6,7 +6,74 @@
              xmlns:local="clr-namespace:Calculadora.Controles"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.3,1" StartPoint="0,0.3">
+            <GradientStop Color="#FF2047F5" Offset="1"/>
+            <GradientStop Color="White" Offset="0.197"/>
+            <GradientStop Color="#FFEDF0FF" Offset="0.397"/>
+        </LinearGradientBrush>
+    </UserControl.Background>
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Border CornerRadius="10" Grid.ColumnSpan="4" Margin="0,0,5,5" Padding="5">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB8FFB5" Offset="0"/>
+                    <GradientStop Color="#FF00950E" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock x:Name="txtResumen" Text="" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFF9F907" FontFamily="Playbill" FontSize="20" />
+                <TextBlock x:Name="txtPantalla" Text="0" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFF9F907" FontFamily="Playbill" FontSize="40" />
+            </StackPanel>
+        </Border>
+        <Button Content="CE" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Style="{DynamicResource btnOperacion}" Foreground="#FFFBFCFF" FontFamily="Showcard Gothic" Click="btnIni_Click" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFFB8C8C" Offset="0"/>
+                    <GradientStop Color="#FFFFAFAF" Offset="0.48"/>
+                    <GradientStop Color="#FFFF7C7C" Offset="0.53"/>
+                    <GradientStop Color="#FFD60101" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Õ" Grid.Column="2" Grid.Row="1" Style="{DynamicResource btnOperacion}" FontFamily="Wingdings" Click="btnRetro_Click" />
+        <Button Content="+" Grid.Column="3" Grid.Row="1" Style="{DynamicResource btnOperacion}" Click="btnOperacion_Click" />
+
+        <Button Content="7" Grid.Column="0" Grid.Row="2" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="8" Grid.Column="1" Grid.Row="2" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="9" Grid.Column="2" Grid.Row="2" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="-" Grid.Column="3" Grid.Row="2" Style="{DynamicResource btnOperacion}" Click="btnOperacion_Click" />
+
+        <Button Content="4" Grid.Column="0" Grid.Row="3" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="5" Grid.Column="1" Grid.Row="3" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="6" Grid.Column="2" Grid.Row="3" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="*" Grid.Column="3" Grid.Row="3" Style="{DynamicResource btnOperacion}" Click="btnOperacion_Click" />
+
+        <Button Content="1" Grid.Column="0" Grid.Row="4" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="2" Grid.Column="1" Grid.Row="4" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="3" Grid.Column="2" Grid.Row="4" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="/" Grid.Column="3" Grid.Row="4" Style="{DynamicResource btnOperacion}" Click="btnOperacion_Click" />
+
+        <Button Content="0" Grid.Column="0" Grid.Row="5" Style="{DynamicResource btnDigito}" Click="btnDigito_Click" />
+        <Button Content="," Grid.Column="1" Grid.Row="5" Style="{DynamicResource btnDigito}" Click="btnComa_Click" />
+        <Button Content="±" Grid.Column="2" Grid.Row="5" Style="{DynamicResource btnDigito}" Click="btnSig_Click" />
+        <Button Content="=" Grid.Column="3" Grid.Row="5" Style="{DynamicResource btnOperacion}" Click="btnOperacion_Click" />
     </Grid>
 </UserControl>

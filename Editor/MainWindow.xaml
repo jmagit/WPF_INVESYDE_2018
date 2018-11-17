@@ -1,0 +1,146 @@
+﻿<Window x:Class="Editor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Editor"
+        mc:Ignorable="d"
+        Title="Editor" Height="400" Width="650">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New"
+                  Executed="ApplicationCommandsExecute"
+                  CanExecute="ApplicationCommandsCanExecute"/>
+        <CommandBinding Command="ApplicationCommands.Open"
+                  Executed="ApplicationCommandsExecute"
+                  CanExecute="ApplicationCommandsCanExecute"/>
+        <CommandBinding Command="ApplicationCommands.Save"
+                  Executed="ApplicationCommandsExecute"
+                  CanExecute="SaveCmdCanExecute"/>
+        <CommandBinding Command="ApplicationCommands.SaveAs"
+                  Executed="ApplicationCommandsExecute"
+                  CanExecute="ApplicationCommandsCanExecute"/>
+        <CommandBinding Command="ApplicationCommands.Close"
+                  Executed="ApplicationCommandsExecute"
+                  CanExecute="ApplicationCommandsCanExecute"/>
+    </Window.CommandBindings>
+    <DockPanel Name="mainPanel">
+        <DockPanel.Resources>
+            <Style TargetType="{x:Type Button}" x:Key="formatTextStyle">
+                <Setter Property="FontFamily" Value="Palatino Linotype"></Setter>
+                <Setter Property="Width" Value="30"></Setter>
+                <Setter Property="FontSize" Value ="14"></Setter>
+                <Setter Property="CommandTarget" Value="{Binding ElementName=mainRTB}"></Setter>
+            </Style>
+
+            <Style TargetType="{x:Type Button}" x:Key="formatImageStyle">
+                <Setter Property="Width" Value="30"></Setter>
+                <Setter Property="CommandTarget" Value="{Binding ElementName=mainRTB}"></Setter>
+            </Style>
+        </DockPanel.Resources>
+
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File" >
+                <MenuItem Header="_New" Command="ApplicationCommands.New"/>
+                <MenuItem Header="_Open ..." Command="ApplicationCommands.Open">
+                    <MenuItem.Icon>
+                        <Image Source="Images/FileOpen.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Save" Command="ApplicationCommands.Save">
+                    <MenuItem.Icon>
+                        <Image Source="Images/FileSave.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save as ..." Command="ApplicationCommands.SaveAs" InputGestureText="Ctrl+X"/>
+                <Separator />
+                <MenuItem Header="Close" Command="ApplicationCommands.Close"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Command="ApplicationCommands.Copy">
+                    <MenuItem.Icon>
+                        <Image Source="Images/EditCopy.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="ApplicationCommands.Cut">
+                    <MenuItem.Icon>
+                        <Image Source="Images/EditCut.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="ApplicationCommands.Paste">
+                    <MenuItem.Icon>
+                        <Image Source="Images/EditPaste.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <!-- This tool bar contains all the editing buttons. -->
+        <ToolBarTray DockPanel.Dock="Top" >
+            <ToolBar Height="30" >
+                <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Cut" ToolTip="Cut">
+                    <Image Source="Images\EditCut.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Copy" ToolTip="Copy">
+                    <Image Source="Images\EditCopy.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Paste" ToolTip="Paste">
+                    <Image Source="Images\EditPaste.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Undo" ToolTip="Undo">
+                    <Image Source="Images\EditUndo.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="ApplicationCommands.Redo" ToolTip="Redo">
+                    <Image Source="Images\EditRedo.png"></Image>
+                </Button>
+            </ToolBar>
+            <ToolBar Height="30" >
+                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleBold" ToolTip="Bold">
+                    <TextBlock FontWeight="Bold">B</TextBlock>
+                </Button>
+                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleItalic" ToolTip="Italic">
+                    <TextBlock FontStyle="Italic" FontWeight="Bold">I</TextBlock>
+                </Button>
+                <Button Style="{StaticResource formatTextStyle}" Command="EditingCommands.ToggleUnderline" ToolTip="Underline">
+                    <TextBlock TextDecorations="Underline" FontWeight="Bold">U</TextBlock>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.IncreaseFontSize" ToolTip="Grow Font">
+                    <Image Source="Images\CharacterGrowFont.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.DecreaseFontSize" ToolTip="Shrink Font">
+                    <Image Source="Images\CharacterShrinkFont.png"></Image>
+                </Button>
+            </ToolBar>
+            <ToolBar Height="30" >
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.ToggleBullets" ToolTip="Bullets">
+                    <Image Source="Images\ListBullets.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.ToggleNumbering" ToolTip="Numbering">
+                    <Image Source="Images/ListNumbering.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignLeft" ToolTip="Align Left">
+                    <Image Source="Images\ParagraphLeftJustify.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignCenter" ToolTip="Align Center">
+                    <Image Source="Images\ParagraphCenterJustify.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignRight" ToolTip="Align Right">
+                    <Image Source="Images\ParagraphRightJustify.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.AlignJustify" ToolTip="Align Justify">
+                    <Image Source="Images\ParagraphFullJustify.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.IncreaseIndentation" ToolTip="Increase Indent">
+                    <Image Source="Images\ParagraphIncreaseIndentation.png"></Image>
+                </Button>
+                <Button Style="{StaticResource formatImageStyle}" Command="EditingCommands.DecreaseIndentation" ToolTip="Decrease Indent">
+                    <Image Source="Images\ParagraphDecreaseIndentation.png"></Image>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <RichTextBox x:Name="mainRTB" AcceptsTab="True" Padding="3" />
+        </ScrollViewer>
+
+        <!-- By default pressing tab moves focus to the next control. Setting AcceptsTab to true allows the 
+           RichTextBox to accept tab characters. -->
+    </DockPanel>
+</Window>
