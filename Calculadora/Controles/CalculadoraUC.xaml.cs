@@ -61,6 +61,8 @@ namespace Calculadora.Controles {
         }
 
         private void Calcula(string nuevaOp) {
+            if(!"+-*/=".Contains(nuevaOp)) { return; }
+
             double operando = double.Parse(txtPantalla.Text);
             switch (operacion) {
                 case '+':
