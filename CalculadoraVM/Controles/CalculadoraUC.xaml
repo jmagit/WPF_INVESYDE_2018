@@ -43,8 +43,10 @@
                 </LinearGradientBrush>
             </Border.Background>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <TextBlock x:Name="txtResumen" Text="{Binding Resumen}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFF9F907" FontFamily="Playbill" FontSize="20" />
-                <TextBlock x:Name="txtPantalla" Text="{Binding Pantalla}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFF9F907" FontFamily="Playbill" FontSize="40" />
+                <TextBlock Text="{Binding Resumen}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFF9F907" FontFamily="Playbill" FontSize="20" />
+                <TextBlock Text="{Binding Pantalla}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#FFF9F907" FontFamily="Playbill" FontSize="40" />
+                <Label Content="{Binding Pantalla, NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, StringFormat=\{0:C\}}" />
+                <TextBox Text="{Binding Pantalla, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
         </Border>
         <Button Content="CE" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Style="{DynamicResource btnOperacion}" Foreground="#FFFBFCFF" FontFamily="Showcard Gothic" Command="{Binding Inicio, Mode=OneWay}" >

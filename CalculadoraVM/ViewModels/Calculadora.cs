@@ -19,6 +19,7 @@ namespace Calculadora.ViewModels {
                 if (pantalla != value) {
                     pantalla = value;
                     NotifyPropertyChanged();
+                    NotifyPropertyChanged(nameof(Coma));
                 }
             }
         }
@@ -68,7 +69,7 @@ namespace Calculadora.ViewModels {
                     } else
                         if (!Pantalla.Contains(","))
                         Pantalla += ",";
-                });
+                }, cmd => !Pantalla.Contains(","));
             }
         }
 
@@ -99,6 +100,9 @@ namespace Calculadora.ViewModels {
                     break;
                 case '/':
                     acumulado /= operando;
+                    break;
+                case '^':
+                    acumulado = double.Parse($"{acumulado}{operando}");
                     break;
                 case '=':
                     acumulado = operando;

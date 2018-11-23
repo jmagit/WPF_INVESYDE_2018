@@ -1,7 +1,7 @@
     using System;
     using System.Windows.Input;
 
-namespace Calculadora {
+namespace Core {
     /// <summary>
     /// DelegateCommand es una versión simplificada del ICommand de WPF. Se puede envolver un método propio,
     /// permitiendo así su ejecución mediante la vinculación como comando a cualquier objeto WPF.
