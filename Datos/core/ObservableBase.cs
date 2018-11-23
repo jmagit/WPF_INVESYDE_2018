@@ -39,9 +39,15 @@ namespace Core {
         protected void NotifyErrorsChanged(string nombre) {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nombre));
         }
-        protected override void NotifyPropertyChanged(string nombre) {
-            base.NotifyPropertyChanged(nombre);
-            NotifyErrorsChanged(nombre);
+        protected override void NotifyPropertyChanged([CallerMemberName] string propertyName = null) {
+            Debug.Assert(
+                string.IsNullOrEmpty(propertyName) ||
+                (GetType().GetProperty(propertyName) != null),
+                "Check that the property name exists for this instance.");
+            base.NotifyPropertyChanged(propertyName);
+            if (this[propertyName] != null) {
+                NotifyErrorsChanged(propertyName);
+            }
         }
         public IEnumerable GetErrors(string propertyName) {
             return new string[] { this[propertyName] };

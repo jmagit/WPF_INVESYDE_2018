@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Datos {
     public class ClienteRepository {
-        public IEnumerable<Cliente> getAll() {
+        public IEnumerable<Cliente> GetAll() {
             return new Cliente[] {
                 new Cliente() { Id = 1, RazonSocial = "Uno" },
                 new Cliente() { Id = 2, RazonSocial = "Dos" },
             };
         }
-        public Cliente get(int id) {
+        public Cliente GetById(int id) {
             return new Cliente() { Id = 1, RazonSocial = "Uno" };
         }
     }

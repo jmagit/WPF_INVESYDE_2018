@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Datos {
     public class Cliente: EntityBase {
-        private int id;
+        private int id = 0;
         public int Id {
             get { return id; }
             set {
                 if (id != value) {
                     id = value;
-                    NotifyPropertyChanged("Id");
+                    NotifyPropertyChanged();
                 }
             }
         }
@@ -23,10 +23,7 @@ namespace Datos {
             set {
                 if (razonSocial != value) {
                     razonSocial = value;
-                    NotifyPropertyChanged("RazonSocial");
-                    if(this["RazonSocial"] != null) {
-                        NotifyErrorsChanged("RazonSocial");
-                    }
+                    NotifyPropertyChanged();
                 }
             }
         }
@@ -35,7 +32,7 @@ namespace Datos {
                 switch (columnName) {
                     case "RazonSocial": 
                         if(string.IsNullOrWhiteSpace(RazonSocial)) {
-                            return "La Razon Social es obligatorio";
+                            return "La Razon Social es obligatoria.";
                         }
                         break;
                 }

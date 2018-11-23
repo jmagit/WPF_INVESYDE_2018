@@ -25,7 +25,7 @@ namespace MVVM.VM {
             set {
                 if (elemento != value) {
                     elemento = value;
-                    NotifyPropertyChanged("Elemento");
+                    NotifyPropertyChanged();
                 }
             }
         }
@@ -33,8 +33,8 @@ namespace MVVM.VM {
         public DelegateCommand List {
             get {
                 return new DelegateCommand(cmd => {
-                    listado = new ObservableCollection<Cliente>(db.getAll());
-                    NotifyPropertyChanged("Listado");
+                    listado = new ObservableCollection<Cliente>(db.GetAll());
+                    NotifyPropertyChanged(nameof(Listado));
                 });
             }
         }
@@ -42,7 +42,7 @@ namespace MVVM.VM {
         public DelegateCommand View {
             get {
                 return new DelegateCommand(cmd => {
-                    Elemento = db.get((int)cmd);
+                    Elemento = db.GetById((int)cmd);
                 });
             }
         }
