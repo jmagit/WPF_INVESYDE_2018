@@ -1,0 +1,24 @@
+﻿<Application x:Class="Gestion.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Gestion"
+             xmlns:cnv="clr-namespace:Gestion.Convertidores" 
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Tema.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <cnv:BooleanToInvisibilityConverter x:Key="BooleanToInvisibilityConverter" />
+            <cnv:InvertVisibilityConverter x:Key="InvertVisibilityConverter" />
+            <cnv:NullToInvisibilityConverter x:Key="NullToInvisibilityConverter" />
+            <cnv:CeroToInvisibilityConverter x:Key="CeroToInvisibilityConverter" />
+            <cnv:ValueToVisibilityConverter x:Key="ValueToVisibilityConverter" />
+            <cnv:ValueToInvisibilityConverter x:Key="ValueToInvisibilityConverter" />
+            <cnv:NegateBooleanConverter x:Key="NegateBooleanConverter" />
+            <cnv:StringToNullConverter x:Key="StringToNullConverter" />
+            <cnv:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

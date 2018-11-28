@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{868FB36A-6473-4FC3-95A0-1D760895853C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gestion</RootNamespace>
+    <AssemblyName>Gestion</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Convertidores\BooleanToInvisibilityConverter.cs" />
+    <Compile Include="Convertidores\CeroToInvisibilityConverter.cs" />
+    <Compile Include="Convertidores\NegateBooleanConverter.cs" />
+    <Compile Include="Convertidores\InvertVisibilityConverter.cs" />
+    <Compile Include="Convertidores\NotNullToBooleanConverter.cs" />
+    <Compile Include="Convertidores\NullToInvisibilityConverter.cs" />
+    <Compile Include="Convertidores\StringToNullConverter.cs" />
+    <Compile Include="Convertidores\ValueToInvisibilityConverter.cs" />
+    <Compile Include="Convertidores\ValueToVisibilityConverter.cs" />
+    <Compile Include="Views\Clientes\ClienteForm.xaml.cs">
+      <DependentUpon>ClienteForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\ClienteLst.xaml.cs">
+      <DependentUpon>ClienteLst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\ClientesMnt.xaml.cs">
+      <DependentUpon>ClientesMnt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\ClienteView.xaml.cs">
+      <DependentUpon>ClienteView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Themes\Tema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Clientes\ClienteForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Clientes\ClienteLst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Clientes\ClientesMnt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Clientes\ClienteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\delete.png" />
+    <Resource Include="Imagenes\Iconos\edit.png" />
+    <Resource Include="Imagenes\Iconos\exit.png" />
+    <Resource Include="Imagenes\Iconos\menu.png" />
+    <Resource Include="Imagenes\Iconos\plus.png" />
+    <Resource Include="Imagenes\Iconos\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aplication.Core\Aplication.Core.csproj">
+      <Project>{6e1973ca-48ef-4e46-9c99-408b740645b8}</Project>
+      <Name>Aplication.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aplication.Services\Aplication.Services.csproj">
+      <Project>{15b67023-9d7b-44ea-95e8-5c8ed43af70e}</Project>
+      <Name>Aplication.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj">
+      <Project>{49444659-efb9-4875-b050-e3b4f59d6f17}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.MainModule.Entities\Domain.MainModule.Entities.csproj">
+      <Project>{c14b9f19-140d-4b4c-b75c-24dbbd197398}</Project>
+      <Name>Domain.MainModule.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.MainModule\Domain.MainModule.csproj">
+      <Project>{36640ba8-d560-4d6f-9b53-fcc2f83e8ada}</Project>
+      <Name>Domain.MainModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.CrossCutting.Contracts\Infrastructure.CrossCutting.Contracts.csproj">
+      <Project>{728d154f-c9b2-4f8f-9769-def63fd777cc}</Project>
+      <Name>Infrastructure.CrossCutting.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.CrossCutting.Core\Infrastructure.CrossCutting.Core.csproj">
+      <Project>{57ff8847-9482-44a9-a99a-d78be1b975e7}</Project>
+      <Name>Infrastructure.CrossCutting.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.Contracts\Infrastructure.Data.Contracts.csproj">
+      <Project>{28272e12-ed51-4605-9db6-5d5bd6db7dd3}</Project>
+      <Name>Infrastructure.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.Core.Contracts\Infrastructure.Data.Core.Contracts.csproj">
+      <Project>{ea0af323-a23d-4908-9a78-a030f6db30e0}</Project>
+      <Name>Infrastructure.Data.Core.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.Core\Infrastructure.Data.Core.csproj">
+      <Project>{e71bba4e-a21a-4fcb-a3cb-e78db38347dd}</Project>
+      <Name>Infrastructure.Data.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.MainModule\Infrastructure.Data.MainModule.csproj">
+      <Project>{b70ca962-ef28-409a-be75-73890197d67e}</Project>
+      <Name>Infrastructure.Data.MainModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Fondos\pexels-photo-921292.png" />
+    <Resource Include="Imagenes\Fondos\pexels-photo-921305.png" />
+    <Resource Include="Imagenes\Fondos\pexels-photo-921322.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\clientes.png" />
+    <Resource Include="Imagenes\Iconos\clientes2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\back.png" />
+    <Resource Include="Imagenes\Iconos\cancel.png" />
+    <Resource Include="Imagenes\Iconos\ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\exclamation.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

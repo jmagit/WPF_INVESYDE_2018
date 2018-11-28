@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Gestion.Views.ClienteForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gestion.Views"
+             xmlns:vm="clr-namespace:Aplication.Services.ViewModel;assembly=Aplication.Services"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" Width="462">
+    <Grid d:DataContext="{d:DesignInstance Type={x:Type vm:ClienteViewModel}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <WrapPanel x:Name="form" DataContext="{Binding Elemento, ValidatesOnNotifyDataErrors=False}" Margin="0,5,0,0" >
+            <StackPanel Margin="5,0,0,0" >
+                <Label Content="Código:" VerticalContentAlignment="Center" FontSize="16" FontFamily="Segoe UI Semilight" />
+                <TextBox Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="40" Style="{DynamicResource TextBox.Campo}" />
+            </StackPanel>
+            <StackPanel Margin="5,0,0,0" >
+                <Label Content="Razón Social:" />
+                <TextBox Text="{Binding RazonSocial, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="200" Style="{DynamicResource TextBox.Campo}" />
+            </StackPanel>
+            <StackPanel Margin="5,0,0,0" >
+                <Label Content="CIF:" />
+                <TextBox Text="{Binding CIF, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="80" Style="{DynamicResource TextBox.Campo}" />
+            </StackPanel>
+            <StackPanel Margin="5,0,0,0" >
+                <Label Content="Direccion:" VerticalContentAlignment="Center" FontSize="16" FontFamily="Segoe UI Semilight" />
+                <TextBox Text="{Binding Direccion, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="300" Style="{DynamicResource TextBox.Campo}" />
+            </StackPanel>
+            <StackPanel Margin="5,0,0,0" >
+                <Label Content="C.P.:" />
+                <TextBox Text="{Binding CP, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="80" Style="{DynamicResource TextBox.Campo}" />
+            </StackPanel>
+            <StackPanel Margin="5,0,0,0" >
+                <Label Content="Localidad:" />
+                <TextBox Text="{Binding Localidad, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="150" Style="{DynamicResource TextBox.Campo}" />
+            </StackPanel>
+            <StackPanel Margin="5,0,0,0" >
+                <Label Content="Pais:" VerticalContentAlignment="Center" FontSize="16" FontFamily="Segoe UI Semilight" />
+                <TextBox Text="{Binding Pais, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="150" Style="{DynamicResource TextBox.Campo}" />
+            </StackPanel>
+            <StackPanel Margin="5,0,0,0" >
+                <Label Content="eMail:" />
+                <TextBox Text="{Binding eMail, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="200" Style="{DynamicResource TextBox.Campo}" />
+            </StackPanel>
+            <CheckBox Margin="5,0,0,0" Content="Moroso" VerticalContentAlignment="Bottom" IsChecked="{Binding Moroso}"/>
+        </WrapPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,5,5">
+            <Button Content="Aceptar" Command="{Binding Accept, Mode=OneWay}" Style="{DynamicResource Button.Comando.Aceptar}" Margin="0,0,5,0" IsDefault="True" IsEnabled="{Binding Elemento.HasErrors, Converter={StaticResource NegateBooleanConverter}, Mode=OneWay, ValidatesOnNotifyDataErrors=False}" />
+            <Button Content="Cancelar" Command="{Binding Cancel, Mode=OneWay}" Style="{DynamicResource Button.Comando.Cancelar}" IsCancel="True" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>
