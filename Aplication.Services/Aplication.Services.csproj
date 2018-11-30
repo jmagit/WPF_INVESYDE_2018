@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\EmployerModel.cs" />
+    <Compile Include="ViewModel\ReportViewModel.cs" />
     <Compile Include="ViewModel\ClienteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

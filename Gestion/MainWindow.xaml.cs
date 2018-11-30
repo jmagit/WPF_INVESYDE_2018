@@ -53,6 +53,8 @@ namespace Gestion {
                             abrir(new ClienteLst(), vm);
                             break;
                         case EstadoCRUD.add:
+                            abrir(new ClienteWizard(), vm);
+                            break;
                         case EstadoCRUD.edit:
                             abrir(new ClienteForm(), vm);
                             break;
@@ -63,6 +65,11 @@ namespace Gestion {
             };
             abrir(new ClienteLst(), vm);
             vm.List.Execute();
+        }
+
+        private void btnReport_Click(object sender, RoutedEventArgs e) {
+            //abrir(new ReportForm());
+            abrir(new ReportWizard());
         }
     }
 }

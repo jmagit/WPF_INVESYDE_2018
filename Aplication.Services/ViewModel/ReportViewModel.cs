@@ -12,12 +12,10 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 
 namespace Aplication.Services.ViewModel {
-    public class ClienteViewModel: ObservableBase, IClosed, ICanClosed {
-        private IClienteRepository db = new ClienteRepository();
+    public class ReportViewModel : ObservableBase, IClosed, ICanClosed {
+        private IReportRepository db = new ReportRepository();
 
         public event EventHandler<CancelEventArgs> Closed;
-        public event EventHandler<EventArgs> Aceptado;
-        public event EventHandler<EventArgs> Cancelado;
 
         protected virtual void OnClosed() {
             Closed?.Invoke(this, new CancelEventArgs());
@@ -25,25 +23,19 @@ namespace Aplication.Services.ViewModel {
         protected virtual void OnClosed(ref CancelEventArgs e) {
             Closed?.Invoke(this, e);
         }
-        protected virtual void OnAceptado() {
-            Aceptado?.Invoke(this, new EventArgs());
-        }
-        protected virtual void OnCancelado() {
-            Cancelado?.Invoke(this, new EventArgs());
-        }
 
         public bool CanClosed() {
             return modo != EstadoCRUD.add && modo != EstadoCRUD.edit;
         }
 
-        private ObservableCollection<Cliente> listado;
-        public ObservableCollection<Cliente> Listado {
+        private ObservableCollection<Report> listado;
+        public ObservableCollection<Report> Listado {
             get {
                 return listado;
             }
         }
-        private Cliente seleccionado;
-        public Cliente Seleccionado {
+        private Report seleccionado;
+        public Report Seleccionado {
             get {
                 return seleccionado;
             }
@@ -54,8 +46,8 @@ namespace Aplication.Services.ViewModel {
                 }
             }
         }
-        private Cliente elemento;
-        public Cliente Elemento {
+        private Report elemento;
+        public Report Elemento {
             get {
                 return elemento;
             }
@@ -89,10 +81,16 @@ namespace Aplication.Services.ViewModel {
         public bool EsEdit => modo == EstadoCRUD.edit;
         public bool EsView => modo == EstadoCRUD.view;
 
+        public ObservableCollection<Category> ListadoCategorias {
+            get {
+                return new ObservableCollection<Category>((new CategoryRepository()).GetAll());
+            }
+        }
+
         public DelegateCommand List {
             get {
                 return new DelegateCommand(cmd => {
-                    listado = new ObservableCollection<Cliente>(db.GetAll());
+                    listado = new ObservableCollection<Report>(db.GetAll());
                     NotifyPropertyChanged(nameof(Listado));
                     Seleccionado = listado.FirstOrDefault();
                     Modo = EstadoCRUD.list;
@@ -103,14 +101,8 @@ namespace Aplication.Services.ViewModel {
         public DelegateCommand Add {
             get {
                 return new DelegateCommand(cmd => {
-                    Elemento = new Cliente();
+                    Elemento = new Report();
                     Modo = EstadoCRUD.add;
-                    accept = new DelegateCommand(x => {
-                        db.Add(Elemento);
-                        cancelEdit();
-                        OnAceptado();
-                    });
-                    NotifyPropertyChanged(nameof(Accept));
                 });
             }
         }
@@ -120,12 +112,6 @@ namespace Aplication.Services.ViewModel {
                     if (cmd != null) {
                         Elemento = db.GetById((int)cmd);
                         Modo = EstadoCRUD.edit;
-                        accept = new DelegateCommand(x => {
-                            db.Modify(Elemento);
-                            cancelEdit();
-                            OnAceptado();
-                        });
-                        NotifyPropertyChanged(nameof(Accept));
                     }
                 });
             }
@@ -151,38 +137,30 @@ namespace Aplication.Services.ViewModel {
                 });
             }
         }
-        protected void cancelEdit() {
-                    Elemento = null;
-                    List.Execute();
-                    accept = null;
-        }
         public DelegateCommand Cancel {
             get {
                 return new DelegateCommand(cmd => {
-                    cancelEdit();
-                    OnCancelado();
+                    Elemento = null;
+                    List.Execute();
                 });
             }
         }
         public DelegateCommand Accept {
             get {
-                return accept;
-                //return new DelegateCommand(cmd => {
-                //    switch(Modo) {
-                //        case EstadoCRUD.add:
-                //            db.Add(Elemento);
-                //            Cancel.Execute();
-                //            break;
-                //        case EstadoCRUD.edit:
-                //            db.Modify(Elemento);
-                //            Cancel.Execute();
-                //            break;
-                //    }
-                //});
+                return new DelegateCommand(cmd => {
+                    switch(Modo) {
+                        case EstadoCRUD.add:
+                            db.Add(Elemento);
+                            Cancel.Execute();
+                            break;
+                        case EstadoCRUD.edit:
+                            db.Modify(Elemento);
+                            Cancel.Execute();
+                            break;
+                    }
+                });
             }
         }
-        protected DelegateCommand accept = null;
-
         public DelegateCommand Close {
             get {
                 return new DelegateCommand(cmd => {
@@ -190,5 +168,14 @@ namespace Aplication.Services.ViewModel {
                 });
             }
         }
+        public DelegateCommand AddEmpleado {
+            get {
+                return new DelegateCommand(cmd => {
+                    if(Elemento != null && cmd is Employee)
+                        Elemento.Employees.Add(cmd as Employee);
+                });
+            }
+        }
+
     }
 }

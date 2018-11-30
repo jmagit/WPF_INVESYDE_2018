@@ -24,6 +24,12 @@
                     <TextBlock Text="Moderno" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="16" />
                 </StackPanel>
             </Button>
+            <Button Style="{DynamicResource Button.Menu}" Click="btnReport_Click" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,0,0,0">
+                    <Image Source="Imagenes/Iconos/list-8x.png" Width="24" Height="24" />
+                    <TextBlock Text="Report" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="16" />
+                </StackPanel>
+            </Button>
         </StackPanel>
         <ContentControl x:Name="root" />
     </DockPanel>

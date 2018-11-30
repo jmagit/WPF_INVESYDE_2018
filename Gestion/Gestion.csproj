@@ -64,6 +64,21 @@
     <Compile Include="Convertidores\StringToNullConverter.cs" />
     <Compile Include="Convertidores\ValueToInvisibilityConverter.cs" />
     <Compile Include="Convertidores\ValueToVisibilityConverter.cs" />
+    <Compile Include="Views\Reports\ReportWizard.xaml.cs">
+      <DependentUpon>ReportWizard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reports\EmpleadosUC.xaml.cs">
+      <DependentUpon>EmpleadosUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reports\ProyectosUC.xaml.cs">
+      <DependentUpon>ProyectosUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reports\CategoriasUC.xaml.cs">
+      <DependentUpon>CategoriasUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clientes\ClienteWizard.xaml.cs">
+      <DependentUpon>ClienteWizard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Clientes\ClienteForm.xaml.cs">
       <DependentUpon>ClienteForm.xaml</DependentUpon>
     </Compile>
@@ -75,6 +90,9 @@
     </Compile>
     <Compile Include="Views\Clientes\ClienteView.xaml.cs">
       <DependentUpon>ClienteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Reports\ReportForm.xaml.cs">
+      <DependentUpon>ReportForm.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +110,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Reports\ReportWizard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Reports\EmpleadosUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Reports\ProyectosUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Reports\CategoriasUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Clientes\ClienteWizard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Clientes\ClienteForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +145,10 @@
     <Page Include="Views\Clientes\ClienteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Reports\ReportForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +248,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Iconos\exclamation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Iconos\list-8x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

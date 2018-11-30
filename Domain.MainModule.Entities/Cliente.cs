@@ -92,6 +92,7 @@ namespace Domain.MainModule.Entities {
 
         [MaxLength(10)]
         [RegularExpression(@"^\d{1,5}$")]
+        [Display(Name = "Código Postal")]
         [DataMember]
         public string CP {
             get { return cp; }
