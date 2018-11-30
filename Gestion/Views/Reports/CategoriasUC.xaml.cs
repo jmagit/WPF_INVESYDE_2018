@@ -21,6 +21,20 @@ namespace Gestion.Views {
         public CategoriasUC() {
             InitializeComponent();
         }
-        
+
+
+
+        public bool Cheked {
+            get { return (bool)GetValue(ChekedProperty); }
+            set { SetValue(ChekedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Cheked.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ChekedProperty =
+            DependencyProperty.Register("Cheked", typeof(bool), typeof(CategoriasUC), 
+                new PropertyMetadata(true));
+
+
+
     }
 }

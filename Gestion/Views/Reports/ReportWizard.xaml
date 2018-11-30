@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <local:CategoriasUC DataContext="{Binding}" Tag="Wizard" />
+        <local:CategoriasUC DataContext="{Binding}" Tag="Wizard" Cheked="False" />
         <local:ProyectosUC DataContext="{Binding}" Tag="Wizard" />
         <local:EmpleadosUC DataContext="{Binding}" Tag="Wizard" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1" Margin="0,0,5,5" >
